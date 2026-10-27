@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace MobileDevices
+﻿namespace MobileDevices
 {
+    // Базовый класс: бренд и цена устройства
     public class MobileDevice
     {
         private string _brand;
@@ -9,17 +8,23 @@ namespace MobileDevices
 
         public string Brand
         {
-            get => _brand;
-            set => _brand = string.IsNullOrWhiteSpace(value) ? "Unknown" : value;
+            get { return _brand; }
+            set
+            {
+                _brand = string.IsNullOrWhiteSpace(value)
+                    ? "Unknown" : value;
+            }
         }
 
         public double Price
         {
-            get => _price;
-            set => _price = value >= 0 ? value : 0;
+            get { return _price; }
+            set { _price = value >= 0 ? value : 0; }
         }
 
-        public MobileDevice() : this("Unknown", 0.0) { }
+        public MobileDevice() : this("Unknown", 0.0)
+        {
+        }
 
         public MobileDevice(string brand, double price)
         {
@@ -29,7 +34,8 @@ namespace MobileDevices
 
         public override string ToString()
         {
-            return $"Brand: {Brand}, Price: {Price}$";
+            return "Brand: " + Brand
+                + ", Price: " + Price + "$";
         }
     }
 }
